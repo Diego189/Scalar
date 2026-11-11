@@ -1,4 +1,4 @@
-class Matrix {
+export class Matrix {
     entries: number[][];
     rows: number;
     cols: number;
@@ -31,7 +31,7 @@ class Matrix {
     }
 }
 
-function matrixMul(A: Matrix, B: Matrix): Matrix {
+export function matrixMul(A: Matrix, B: Matrix): Matrix {
     const C = new Matrix();
 
     for (let i = 0; i < A.rows; i++) {
