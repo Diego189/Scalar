@@ -1,4 +1,4 @@
-export class Matrix {
+export class matrix {
     entries: number[][];
     rows: number;
     cols: number;
@@ -31,8 +31,9 @@ export class Matrix {
     }
 }
 
-export function matrixMul(A: Matrix, B: Matrix): Matrix {
-    const C = new Matrix();
+
+export function matrixMul(A: matrix, B: matrix): matrix {
+    const C = new matrix();
 
     for (let i = 0; i < A.rows; i++) {
         for (let j = 0; j < B.cols; j++) {
@@ -56,54 +57,36 @@ export function matrixMul(A: Matrix, B: Matrix): Matrix {
     return C;
 }
 
-function inverseMatrix(A: Matrix): Matrix {
+
+export function matrixAdd(A: matrix, B: matrix): matrix {
+    const C = new matrix();
+    for (let i = 0; i<A.rows; i++) {
+        for (let j = 0; j<A.cols; j++) {
+            const a = A.access(i,j);
+            const b = B.access(i,j);
+            const c = a + b;
+            C.addEntry(c);
+        }
+        C.addRow();
+    }
+    C.finalize();
+    return C;
+}
+
+
+function inverseMatrix(A: matrix): matrix {
     // Placeholder: does not calculate the inverse yet.
     return A;
 }
 
-function charPoly(A: Matrix): string {
+
+function charPoly(A: matrix): string {
     // Placeholder: does not calculate the characteristic polynomial yet.
     return "hi";
 }
 
-const test_matrix1 = new Matrix();
 
-for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-        test_matrix1.addEntry(j + i);
-    }
-
-    test_matrix1.addRow();
+function det(A: matrix): number {
+    return 0
 }
 
-test_matrix1.finalize();
-
-const test_matrix2 = new Matrix();
-
-for (let i = 1; i < 5; i++) {
-    for (let j = 1; j < 5; j++) {
-        test_matrix2.addEntry(j + i);
-    }
-
-    test_matrix2.addRow();
-}
-
-test_matrix2.finalize();
-
-for (let i = 0; i < 4; i++) {
-    console.log(test_matrix1.entries[i]);
-}
-
-console.log("\n");
-
-for (let i = 0; i < 4; i++) {
-    console.log(test_matrix2.entries[i]);
-}
-
-const test_matrix3 = matrixMul(test_matrix1, test_matrix2);
-
-console.log("\n");
-
-for (let i = 0; i < 4; i++) {
-    console.log(test_matrix3.entries[i]);
-}

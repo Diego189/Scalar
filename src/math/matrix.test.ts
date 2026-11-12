@@ -1,19 +1,19 @@
-import { Matrix, matrixMul } from "./matrix";
+import { matrix, matrixMul } from "./matrix";
 
-// Builds a Matrix using your existing methods.
-function createMatrix(entries: number[][]): Matrix {
-    const matrix = new Matrix();
+// Builds a Matrix
+function createMatrix(entries: number[][]): matrix {
+    const Matrix = new matrix();
 
     for (const row of entries) {
         for (const entry of row) {
-            matrix.addEntry(entry);
+            Matrix.addEntry(entry);
         }
 
-        matrix.addRow();
+        Matrix.addRow();
     }
 
-    matrix.finalize();
-    return matrix;
+    Matrix.finalize();
+    return Matrix;
 }
 
 test.each([
