@@ -4,6 +4,15 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@expo/ui": "~58.0.27",
+    "@gorhom/bottom-sheet": "latest",
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/datetimepicker": "9.2.1",
+    "@react-native-community/slider": "5.2.1",
+    "@storybook/addon-ondevice-actions": "latest",
+    "@storybook/addon-ondevice-controls": "latest",
+    "@storybook/react-native": "latest",
+    "@storybook/react-native-ui-lite": "latest",
+    "cross-env": "latest",
     "expo": "^58.0.23",
     "expo-constants": "~58.0.15",
     "expo-device": "~58.0.5",
@@ -21,11 +30,15 @@
     "react-dom": "19.3.0",
     "react-native": "0.88.1",
     "react-native-gesture-handler": "~3.3.0",
+    "react-native-paper": "^5.15.4",
     "react-native-reanimated": "4.7.1",
-    "react-native-safe-area-context": "~5.11.1",
+    "react-native-responsive-fontsize": "^0.5.1",
+    "react-native-safe-area-context": "^5.11.1",
     "react-native-screens": "~4.30.1",
+    "react-native-svg": "15.16.0",
     "react-native-web": "~0.21.4",
-    "react-native-worklets": "0.13.0"
+    "react-native-worklets": "0.13.0",
+    "storybook": "^10.6.7"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
@@ -36,6 +49,7 @@
   },
   "scripts": {
     "start": "expo start",
+    "storybook": "STORYBOOK_ENABLED=true expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -43,7 +57,9 @@
     "lint": "expo lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "storybook:ios": "cross-env STORYBOOK_ENABLED=true expo start --ios",
+    "storybook:android": "cross-env STORYBOOK_ENABLED=true expo start --android"
   },
   "private": true
 }
