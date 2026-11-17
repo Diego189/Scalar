@@ -68,7 +68,8 @@ export const smSave: Story = {
     args: {
         label: "Save",
         mode: "sm",
-        icon: "plus",
+        icon: "bookmark-outline",
+        labelStyle: { fontSize: 12 },
     },
 };
 
@@ -77,5 +78,6 @@ export const smPaste: Story = {
         label: "Paste",
         mode: "sm",
         icon: "content-paste",
+        labelStyle: { fontSize: 12 },
     },
 };

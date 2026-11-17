@@ -1,7 +1,8 @@
 import { Button } from 'react-native-paper'
-import {StyleProp, StyleSheet, ViewStyle} from 'react-native'
+import {StyleProp, StyleSheet, TextStyle, ViewStyle} from 'react-native'
 import {theme} from "@/shared/theme";
-import {ComponentProps} from "react";
+import {ComponentProps, useState} from "react";
+import {labelStyle} from "@expo/ui/swift-ui/modifiers";
 
 type buttonProps = {
     label: string;
@@ -10,13 +11,23 @@ type buttonProps = {
     icon?: ComponentProps<typeof Button>["icon"];
     textColor?: string;
     overrideStyles?: StyleProp<ViewStyle>;
+    labelStyle?: StyleProp<TextStyle>;
 }
 
-export const CustomButton = ({ label, onPress, mode = 'md', icon, textColor = "white", overrideStyles }: buttonProps) => {
-    const currentButtonStyle = [styles[mode], overrideStyles];
+export const CustomButton = ({ label, onPress, mode = 'md', icon, textColor = "white", overrideStyles, labelStyle }: buttonProps) => {
+    const [pressed, setPressed] = useState(false);
+    const currentButtonStyle = [styles[mode], overrideStyles, { transform: [{ scale: pressed ? 0.97 : 1 }] }];
     const currentTextColor = mode !== "lg" ? theme.colors.primary : textColor
     return (
-        <Button onPress={onPress} style={currentButtonStyle} icon={icon} textColor={currentTextColor}>
+        <Button
+            onPressIn={() => setPressed(true)}
+            onPressOut={() => setPressed(false)}
+            onPress={onPress}
+            style={currentButtonStyle}
+            icon={icon}
+            textColor={currentTextColor}
+            labelStyle={labelStyle}
+        >
             {label}
         </Button>
     )
