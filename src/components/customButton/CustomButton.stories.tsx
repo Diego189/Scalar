@@ -42,7 +42,7 @@ export const NewCalculation: Story = {
 
 export const Calculate: Story = {
     args: {
-        label: "New calculation",
+        label: "Calculate",
         mode: "lg",
         icon: "calculator",
     },
