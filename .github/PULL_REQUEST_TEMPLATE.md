@@ -2,10 +2,6 @@
 
 Provide a brief description of the changes in this pull request. What feature, bug fix, or improvement does this address?
 
-## Related Issue
-
-Link to any related issues in the repository (e.g., `Fixes #123`, `Closes #456`).
-
 ## Type of Change
 
 Please select the type of change you’re making with this PR:
