@@ -2,7 +2,6 @@ import { Button } from 'react-native-paper'
 import {StyleProp, StyleSheet, TextStyle, ViewStyle} from 'react-native'
 import {theme} from "@/shared/theme";
 import {ComponentProps, useState} from "react";
-import {labelStyle} from "@expo/ui/swift-ui/modifiers";
 
 type buttonProps = {
     label: string;
