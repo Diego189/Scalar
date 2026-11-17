@@ -3,6 +3,7 @@ import { StyleSheet , View } from "react-native";
 import { operationIcons } from "@/constants/operationIcons"
 import { Icon, Text, TouchableRipple } from "react-native-paper";
 import {theme} from "@/shared/theme";
+
 type OperationTagProps = {
     operation: MatrixOperation;
     onPress: () => {}
