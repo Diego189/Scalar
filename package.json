@@ -53,6 +53,7 @@
   },
   "scripts": {
     "start": "expo start",
+    "compile": "tsc --noEmit",
     "storybook": "STORYBOOK_ENABLED=true expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",

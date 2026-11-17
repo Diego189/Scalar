@@ -24,7 +24,7 @@ jobs:
 
       - name: Lint Code
         run: |
-          yarn compile
+          yarn lint
 
       - name: Compile TypeScript
         run: |
