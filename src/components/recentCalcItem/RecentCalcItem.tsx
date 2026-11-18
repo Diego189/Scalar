@@ -5,13 +5,13 @@ import {theme} from "@/shared/theme";
 import { Divider } from 'react-native-paper';
 import {MatrixDimensionsTag} from "@/components/matrixDimensionsTag/MatrixDimensionsTag";
 import {styles} from "./styles"
+
 type itemProps = {
     operation: MatrixOperation,
     matrixA: MatrixA;
     matrixB?: MatrixB;
     onPress?: () => void,
 }
-
 
 export const RecentCalcItem = ({ operation, matrixA, matrixB, onPress }: itemProps) => {
     const itemOperation = (operation: MatrixOperation): string => operationLabelsMap[operation];
