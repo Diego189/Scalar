@@ -1,10 +1,10 @@
 import {MatrixOperation, operationLabelsMap, operationLabels, MatrixA, MatrixB} from "@/types/matrix";
-import {View, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity} from "react-native";
 import {Ionicons, MaterialCommunityIcons} from '@expo/vector-icons';
 import {theme} from "@/shared/theme";
 import { Divider } from 'react-native-paper';
 import {MatrixDimensionsTag} from "@/components/matrixDimensionsTag/MatrixDimensionsTag";
-
+import {styles} from "./styles"
 type itemProps = {
     operation: MatrixOperation,
     matrixA: MatrixA;
@@ -44,58 +44,3 @@ export const RecentCalcItem = ({ operation, matrixA, matrixB, onPress }: itemPro
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexDirection: "row",
-        alignItems: "center",
-        width: "100%",
-        borderWidth: 1,
-        borderColor: 'lightgrey',
-        borderRadius: 10,
-        padding: 10,
-    },
-    mainLabel: {
-        fontWeight: "bold",
-        fontSize: 18,
-    },
-    subLabel: {
-        fontSize: 14,
-        color: "grey",
-        fontWeight: "500"
-    },
-    labelContainer: {
-        alignItems: "center",
-        paddingLeft: 20,
-        flexDirection: "row",
-
-    },
-    leftIcon: {
-        width: "10%",
-        alignItems: "center",
-    },
-    rightIcon: {
-        width: "10%",
-        alignItems: "center",
-        marginLeft: "auto"
-    },
-    divider: {
-        width: 1,
-        height: 20,
-        marginHorizontal: 12,
-        backgroundColor: theme.colors.primary
-    },
-    innerContentContainer: {
-        flexDirection: "column",
-        width: "55%",
-    },
-    tagContainer: {
-        flexDirection: "row",
-        paddingTop: 5,
-        justifyContent: "space-around",
-        paddingHorizontal: 10,
-    },
-    tagContainerSolo: {
-        justifyContent: "flex-start",
-    }
-})
