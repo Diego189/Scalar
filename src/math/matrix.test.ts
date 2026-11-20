@@ -1,4 +1,4 @@
-import { matrix, matrixMul } from "./matrix";
+import { matrix, ref } from "./matrix";
 
 // Builds a Matrix
 function createMatrix(entries: number[][]): matrix {
@@ -18,86 +18,75 @@ function createMatrix(entries: number[][]): matrix {
 
 test.each([
     {
-        name: "multiplies two 2×2 matrices",
+        name: "normalizes a single-row matrix",
         a: [
-            [1, 2],
-            [3, 4],
-        ],
-        b: [
-            [5, 6],
-            [7, 8],
+            [2, 4, 6]
         ],
         expected: [
-            [19, 22],
-            [43, 50],
-        ],
-    },
-    {
-        name: "multiplies a 2×3 matrix by a 3×2 matrix",
-        a: [
             [1, 2, 3],
-            [4, 5, 6],
-        ],
-        b: [
-            [7, 8],
-            [9, 10],
-            [11, 12],
-        ],
-        expected: [
-            [58, 64],
-            [139, 154],
         ],
     },
     {
-        name: "preserves a matrix when multiplied by the identity",
+        name: "converts a 2×2 matrix to REF",
         a: [
-            [2, 3],
-            [4, 5],
+            [2, 4],
+            [4, 10],
         ],
-        b: [
-            [1, 0],
+        expected: [
+            [1, 2],
             [0, 1],
         ],
-        expected: [
-            [2, 3],
-            [4, 5],
-        ],
     },
     {
-        name: "returns a zero matrix with the correct dimensions",
+        name: "converts a 3×3 matrix to REF",
         a: [
-            [1, 2],
-            [3, 4],
-        ],
-        b: [
-            [0, 0, 0],
-            [0, 0, 0],
+            [1, 2, 3],
+            [2, 5, 8],
+            [3, 8, 14],
         ],
         expected: [
-            [0, 0, 0],
-            [0, 0, 0],
+            [1, 2, 3],
+            [0, 1, 2],
+            [0, 0, 1],
         ],
     },
     {
         name: "handles negative numbers",
         a: [
-            [-1, 2],
-            [3, -4],
-        ],
-        b: [
-            [5, -6],
-            [-7, 8],
+            [-2, 4],
+            [4, -10],
         ],
         expected: [
-            [-19, 22],
-            [43, -50],
+            [1, -2],
+            [0, 1],
         ],
     },
-])("$name", ({ a, b, expected }) => {
+    {
+        name: "handles fractional pivots",
+        a: [
+            [2, 1],
+            [1, 1],
+        ],
+        expected: [
+            [1, 0.5],
+            [0, 1],
+        ],
+    },
+    {
+        name: "handles a rectangular matrix with more columns than rows",
+        a: [
+            [2, 4, 6],
+            [4, 10, 14],
+        ],
+        expected: [
+            [1, 2, 3],
+            [0, 1, 1],
+        ],
+    },
+])("$name", ({ a, expected }) => {
     const A = createMatrix(a);
-    const B = createMatrix(b);
 
-    const result = matrixMul(A, B);
+    const result = ref(A);
 
     expect(result.entries).toEqual(expected);
     expect(result.rows).toBe(expected.length);
