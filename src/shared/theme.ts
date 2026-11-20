@@ -14,6 +14,7 @@ export const theme = {
         primary: '#348B74',
         lightPrimary: '#5DA290',
         lightGrey: '#F7F7F8',
+        lightBackgroundGreen: '#E5F0E4'
     },
     fonts: {
         ...fonts,
